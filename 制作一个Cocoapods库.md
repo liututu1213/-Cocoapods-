@@ -6,7 +6,23 @@
 A:共享文件
 B:LICENSE文件(默认一般选择==MIT==);
 C:库描述文件 .podspec
-### 1.编辑.podspec文件
+
+### 1.Spec Repo
+     它是所有Pods的索一个索引 就是一个容器,所有公开的Pods都在里面,它实际上是一个Git仓库remote端GitHub上,
+     当你使用了Cocoapods 后它会被clone到本地的 ~/.cocoapods/repos   
+     创建私有库:
+     a.执行pod repo add Cathyliu-repo git@git.coding.net:cathyliu/spec_repo_demo.git
+     b.执行pod repo list 查看repo列表
+     c.cd ~/.cocoapods/repos/  查看 repository目录下的文件内容
+     d.想新创建spec repo 添加podspec 文件
+     e.创建项目天剑podspec
+     f.验证podspec
+     g.pod repo push Cathyliu-repo podSepcTest.podspec //将podspec文件push新建的repo库里面
+     
+     
+     
+     
+### 2.编辑.podspec文件
     Pod::Spec.new do |s|  
     s.name             = "podSepcTest"  
     s.version          = "0.1.0"  
@@ -21,7 +37,7 @@ C:库描述文件 .podspec
     s.frameworks = 'UIKit'  
     end  
 - 验证podspec文件的合法性
-  pod lib lint podSepcTest.podspec
+  pod lib lint podSepcTest.podspec --allow-warnings
 
 ### 3.打tag,发布一个release版本
 ##### A.提交需要共享文件
